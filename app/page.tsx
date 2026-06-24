@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
@@ -10,24 +12,12 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        
+        {/* Catálogo Resumido de Destaques */}
         <ProductCatalog />
+        
+        {/* Formulário de Encomendas */}
         <CustomOrderForm />
-
-        {/* Seção Sobre Nós com o Selo Oficial Corrigido */}
-        <section id="sobre" className="py-16 px-4 max-w-4xl mx-auto text-center">
-          <div className="bg-[#F8B8D0]/10 rounded-3xl p-8 border border-[#F8B8D0]/30 flex flex-col md:flex-row items-center gap-8 text-left">
-            <div className="flex-1 order-2 md:order-1">
-              <h3 className="text-2xl font-bold mb-4 text-[#4A3E3D]">Sobre o Ateliê</h3>
-              <p className="text-base text-[#4A3E3D]/80 leading-relaxed">
-                O <strong>gisa ateliê</strong> nasceu da paixão por pixel art e artesanato. Cada peça é produzida manualmente com atenção milimétrica aos detalhes para transformar personagens, memórias e ideias em arte durável através das pequenas contas de Hama Beads.
-              </p>
-            </div>
-            {/* Removido o hidden para o selo aparecer em todos os dispositivos */}
-            <div className="w-40 h-40 flex-shrink-0 bg-white p-2 rounded-full shadow-sm border border-[#F8B8D0]/20 mx-auto md:mx-0 order-1 md:order-2 flex items-center justify-center overflow-hidden">
-              <img src="/selo.png" alt="Selo Gisa Ateliê" className="w-full h-full object-contain" />
-            </div>
-          </div>
-        </section>
       </main>
 
       {/* Rodapé */}
@@ -39,17 +29,29 @@ export default function Home() {
           </div>
           
           <div className="flex justify-center gap-6 font-semibold">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#F8B8D0] transition-colors">
+            {/* LINK DO INSTAGRAM AJUSTADO PARA VARIÁVEL DE AMBIENTE */}
+            <a 
+              href={process.env.NEXT_PUBLIC_INSTAGRAM_URL || 'https://instagram.com'} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-[#F8B8D0] transition-colors"
+            >
               📸 Instagram
             </a>
-            <a href="https://wa.me/seu-numero" target="_blank" rel="noopener noreferrer" className="hover:text-[#CDB4F6] transition-colors">
+            {/* LINK DO WHATSAPP COM VARIÁVEL DE AMBIENTE */}
+            <a 
+              href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-[#CDB4F6] transition-colors"
+            >
               💬 WhatsApp
             </a>
           </div>
           
           <div className="flex flex-col md:items-end gap-2 text-xs text-[#FFF9F4]/70">
-            <a href="#" className="hover:underline">Política de Privacidade</a>
-            <a href="#" className="hover:underline">Trocas e Devoluções</a>
+            <a href="/politica-de-privacidade" className="hover:underline">Política de Privacidade</a>
+            <a href="/trocas-e-devolucoes" className="hover:underline">Trocas e Devoluções</a>
           </div>
         </div>
         <div className="text-center text-xs text-[#FFF9F4]/40 mt-8 pt-4 border-t border-[#FFF9F4]/10">

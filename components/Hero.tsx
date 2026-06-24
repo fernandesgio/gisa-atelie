@@ -15,10 +15,12 @@ export default function Hero() {
           Peças exclusivas, personalizadas e produzidas pixel por pixel para dar vida aos seus personagens favoritos.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="#catalogo" className="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#F8B8D0] hover:bg-[#F8B8D0]/90 text-[#4A3E3D] font-bold px-8 py-3.5 rounded-full shadow-md transition-all border-b-4 border-[#4A3E3D]/20">
+          {/* MUDADO AQUI: Redireciona para a nova aba/página de produtos */}
+          <a href="/produtos" className="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#F8B8D0] hover:bg-[#F8B8D0]/90 text-[#4A3E3D] font-bold px-8 py-3.5 rounded-full shadow-md transition-all border-b-4 border-[#4A3E3D]/20">
             <ShoppingBasket className="w-5 h-5" /> Ver Produtos
           </a>
-          <a href="#personalizados" className="w-full sm:w-auto flex items-center justify-center gap-2 bg-white hover:bg-[#FFF9F4] text-[#4A3E3D] font-bold px-8 py-3.5 rounded-full border-2 border-[#CDB4F6] shadow-sm transition-all">
+          {/* CORRIGIDO AQUI: Aponta para o ID correto (#encomenda) do formulário na Home */}
+          <a href="#encomenda" className="w-full sm:w-auto flex items-center justify-center gap-2 bg-white hover:bg-[#FFF9F4] text-[#4A3E3D] font-bold px-8 py-3.5 rounded-full border-2 border-[#CDB4F6] shadow-sm transition-all">
             <MessageSquareHeart className="w-5 h-5 text-[#CDB4F6]" /> Fazer Encomenda
           </a>
         </div>
