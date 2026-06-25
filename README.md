@@ -1,62 +1,53 @@
 # ✨ Gisa Ateliê ✨
+> Pixels que conectam, detalhes que encantam.
 
-> Pixels que conectam, detalhes que encantam. Vitrine Digital e Sistema de Encomendas em Pixel Art (Hama Beads).
-
-Este repositório contém o código-fonte completo da plataforma web do **Gisa Ateliê**. O projeto foi estruturado utilizando conceitos modernos de desenvolvimento de software para servir como um catálogo interativo de produtos e um captador de encomendas personalizadas com redirecionamento estratégico de conversão.
-
----
-
-## 🎨 Identidade Visual & Paleta de Cores
-
-O design foi elaborado buscando um visual acolhedor, artesanal e moderno, utilizando cores balanceadas para garantir excelente contraste e acessibilidade:
-
-| Elemento | Código Cor | Aplicação Visual |
-| :--- | :--- | :--- |
-| **Texto Principal** | `#4A3E3D` | Garante uma leitura confortável, orgânica e robusta |
-| **Fundo de Cards** | `#FFF9F4` | Concede um tom off-white suave e artesanal |
-| **Detalhes e Bordas** | `#F8B8D0` | Usado em detalhes sutis, linhas finas e divisórias |
-| **Destaque e Preços** | `#f274a4` | Focado nas chamadas de ação (`CTA`), botões e valores |
-| **Tags e Categorias** | `#CDB4F6` | Destaca o nicho do produto (ex: Pets, Geek) de forma leve |
+Este é o repositório oficial da plataforma web do **Gisa Ateliê**, um projeto desenvolvido com tecnologias modernas de web development para integrar a arte em *Pixel Art (Hama Beads)* com uma experiência digital eficiente de vendas e encomendas personalizadas.
 
 ---
 
-## 🖼️ Galeria da Vitrine (Assets do Site)
+## 🖼️ Visão Geral do Projeto
+O sistema foi idealizado para ser o canal oficial de vendas da Giovanna e da Isadora. O foco foi unir design responsivo, usabilidade intuitiva e uma estrutura técnica robusta.
 
-Abaixo estão referenciados os banners estruturais e caminhos de imagens utilizados na interface para compor o catálogo:
+### 🏠 Aterrisagem e Hero
+A interface foi projetada para conversão imediata, destacando a identidade visual e chamadas de ação claras.
+![Página Inicial](docs/inicial.png)
 
-### Banner Principal de Destaques
-![Banner Seção Pets](./public/pet-banner.png)
-
-### Elementos de Identidade e Produtos
-| Selo de Autenticidade | Amostra de Categoria (Ímãs / Chaveiros) |
+### 🛒 Catálogo e Vitrine
+Desenvolvemos uma experiência dinâmica de navegação. Na Home, destacamos os produtos mais procurados; na vitrine completa, o cliente conta com filtros por categoria para encontrar exatamente o que busca.
+| Mais Procurados | Vitrine Completa (Filtros) |
 | :---: | :---: |
-| <img src="./public/selo.png" width="180" alt="Selo Gisa Ateliê"> | <img src="https://placehold.co/300x300/fff9f4/f274a4?text=Hama+Beads" width="180" alt="Exemplo de Produto"> |
+| ![Catálogo Destaques](docs/catalogo.png) | ![Vitrine Completa](docs/vitrini.png) |
 
-> 📂 **Nota de Desenvolvimento:** As fotos reais e exclusivas de cada produto comercializado encontram-se centralizadas organizadamente dentro do diretório `public/produtos/`.
+### 📖 Nossa História
+A seção "Sobre" não é apenas um texto, é storytelling puro. É onde humanizamos a marca e conectamos os clientes com a trajetória da Gi e da Isa.
+![Nossa História](docs/sobre.png)
 
----
-
-## 🚀 Tecnologias e Frameworks
-
-* **Next.js 15 (App Router)** — Framework React focado em performance, renderização eficiente e SEO.
-* **React 19** — Biblioteca base para a construção de interfaces reativas baseadas em componentes flexíveis.
-* **Tailwind CSS** — Framework utilitário para estilização fluida, moderna e totalmente responsiva.
-* **Dotenv & Environment Variables** — Camada de segurança essencial para o isolamento de chaves privadas.
+### 📝 Encomendas Sob Medida
+O formulário de encomenda personalizada permite que o cliente envie detalhes específicos, transformando ideias em projetos de arte concretos através de uma comunicação direta.
+![Formulário de Pedido](docs/personalizado.png)
 
 ---
 
-## 🔐 Segurança e Boas Práticas (LGPD & Proteção Anti-Spam)
+## 🛠️ Tecnologias e Ferramentas
+O projeto foi construído seguindo boas práticas de *Clean Code* e *Performance*:
 
-Para proteger a integridade de dados sensíveis e pessoais (como números de telefone privados, links diretos de comunicação corporativa e perfis sociais), o projeto utiliza estritamente **Variáveis de Ambiente**. Isso impede que robôs de varredura pública (*web scrapers*) capturem dados privados direto no histórico do GitHub.
+* **Framework:** Next.js 15 (App Router)
+* **Estilização:** Tailwind CSS (Design System customizado)
+* **Segurança:** Variáveis de ambiente (`.env`)
+* **Deploy:** Vercel
 
-### 📋 Configuração do Arquivo de Ambiente
+---
 
-Crie um arquivo `.env.local` na raiz do seu projeto local. Este arquivo está devidamente listado no `.gitignore` e **nunca** deve ser enviado para repositórios públicos:
+## 🔐 Configuração de Segurança (Importante)
+Para garantir a privacidade dos contatos do Ateliê e evitar spam, os dados sensíveis são gerenciados via variáveis de ambiente. 
 
-'''env
-# Configurações de Redirecionamento Seguro (Substitua pelos dados oficiais)
-NEXT_PUBLIC_WHATSAPP_NUMBER=SEU_NUMERO_COM_DDD_AQUI
-NEXT_PUBLIC_INSTAGRAM_URL=LINK_DO_SEU_PERFIL_AQUI
+**Como configurar seu ambiente:**
+1. Crie um arquivo `.env.local` na raiz do projeto.
+2. Adicione os campos abaixo (o arquivo `.env.local` já está ignorado pelo Git):
+
+```env
+NEXT_PUBLIC_WHATSAPP_NUMBER=SEU_NUMERO_AQUI
+NEXT_PUBLIC_INSTAGRAM_URL=URL_DO_INSTAGRAM_AQUI
 
 ✨ Funcionalidades Avançadas Implementadas
 
