@@ -32,7 +32,7 @@ O formulário de encomenda personalizada permite que o cliente envie detalhes es
 O projeto foi construído seguindo boas práticas de *Clean Code* e *Performance*:
 
 * **Framework:** Next.js 15 (App Router)
-* **Estilização:** Tailwind CSS (Design System customizado)
+* **Estilização:** CSS
 * **Segurança:** Variáveis de ambiente (`.env`)
 * **Deploy:** Vercel
 
