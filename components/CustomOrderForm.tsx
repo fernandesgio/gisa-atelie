@@ -33,7 +33,29 @@ export default function CustomOrderForm() {
   return (
     <section id="encomenda" className="py-16 px-4 bg-[#FFF9F4] border-y border-[#F8B8D0]/20">
       <div className="max-w-2xl mx-auto bg-white rounded-3xl p-8 border border-[#F8B8D0]/30 shadow-sm">
-        <h2 className="text-2xl font-bold text-center mb-2 text-[#4A3E3D]">Encomenda Personalizada</h2>
+        
+        {/* TÍTULO EXCLUSIVO EM PIXEL ART COM LETRAS COLORIDAS */}
+        <div style={{ textAlign: 'center', marginBottom: '0.5rem' }}>
+          <h2 style={{ 
+            fontFamily: "'Silkscreen', sans-serif", 
+            fontSize: '1.65rem', 
+            fontWeight: 'bold', 
+            letterSpacing: '0.05em', 
+            userSelect: 'none' 
+          }}>
+            {"Encomenda Personalizada".split("").map((char, index) => {
+              const colors = ['#f182ad', '#946ad8', '#e0574b'];
+              const currentColor = colors[index % colors.length];
+              if (char === " ") return <span key={index}>&nbsp;</span>;
+              return (
+                <span key={index} style={{ fontFamily: "'Silkscreen', sans-serif", color: currentColor }}>
+                  {char}
+                </span>
+              );
+            })}
+          </h2>
+        </div>
+        
         <p className="text-sm text-center text-[#4A3E3D]/70 mb-8">Transforme suas ideias e fotos em arte de pixel!</p>
         
         <form onSubmit={handleSendOrder} className="space-y-6">
@@ -59,7 +81,6 @@ export default function CustomOrderForm() {
             />
           </div>
 
-          {/* Aviso visual amigável substituindo o upload */}
           <div className="bg-[#FFF9F4] p-4 rounded-xl border border-dashed border-[#F8B8D0]/50 text-center">
             <span className="text-xl mb-1 block">📸</span>
             <p className="text-xs text-[#4A3E3D]/80">

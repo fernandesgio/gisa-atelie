@@ -3,9 +3,9 @@
 import React, { useState } from 'react';
 
 const PRODUCTS = [
-  { id: 1, name: 'Chaveiro Gatinho Personalizado', price: 'R$ 25,00', tag: 'Pet', desc: 'Chaveiro em Hama Beads feito com base na foto do seu felino favorito.' },
-  { id: 2, name: 'Ímã de Geladeira Cãozinho', price: 'R$ 22,00', tag: 'Pet', desc: 'Lindo ímã pixelado para decorar seu ambiente com a carinha do seu doguinho.' },
-  { id: 3, name: 'Placa Decorativa Pets Welcome', price: 'R$ 45,00', tag: 'Decoração', desc: 'Placa perfeita para a entrada da sua casa mostrando o amor pelos animais.' },
+  { id: 1, name: 'Chaveiro Pet Personalizado', price: 'R$ 32,00', tag: 'Pet', desc: 'Seu pet em pixel art! Chaveiro feito sob encomenda com base na foto do seu bichinho (tamanho padrão). Para outros tamanhos, consulte valores entre R$ 30,00 e R$ 35,00.' },
+  { id: 2, name: 'Ímã de Geladeira Cãozinho', price: 'R$ 25,00', tag: 'Pet', desc: 'Lindo ímã pixelado padrão para decorar seu ambiente com a carinha do seu doguinho.' },
+  { id: 3, name: 'Placa Decorativa Pets Welcome', price: 'R$ 40,00', tag: 'Decoração', desc: 'Placa perfeita para a entrada da sua casa mostrando o amor pelos animais.' },
 ];
 
 export default function ProductCatalog() {
@@ -13,7 +13,27 @@ export default function ProductCatalog() {
 
   return (
     <section id="catalogo" className="py-16 px-4 max-w-7xl mx-auto relative z-30 scroll-mt-16">
-      <h2 className="text-3xl font-bold text-center mb-12 text-[#4A3E3D]">Mais Procurados</h2>
+      {/* TÍTULO PIXELADO E COLORIDO VIA STYLE INLINE */}
+      <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+        <h2 style={{ 
+          fontFamily: "'Silkscreen', sans-serif", 
+          fontSize: '1.85rem', 
+          fontWeight: 'bold', 
+          letterSpacing: '0.05em', 
+          userSelect: 'none' 
+        }}>
+          {"Mais Procurados".split("").map((char, index) => {
+            const colors = ['#f182ad', '#946ad8', '#e0574b'];
+            const currentColor = colors[index % colors.length];
+            if (char === " ") return <span key={index}>&nbsp;</span>;
+            return (
+              <span key={index} style={{ fontFamily: "'Silkscreen', sans-serif", color: currentColor }}>
+                {char}
+              </span>
+            );
+          })}
+        </h2>
+      </div>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {PRODUCTS.map((product) => (
@@ -27,11 +47,9 @@ export default function ProductCatalog() {
               </div>
               <span className="text-xs font-bold uppercase tracking-wider text-[#7a59b0] bg-[#CDB4F6]/20 px-3 py-1 rounded-full">{product.tag}</span>
               <h3 className="font-bold text-lg mt-3 text-[#4A3E3D]">{product.name}</h3>
-              {/* VALOR COM A COR AJUSTADA E TEXTO EXTRA NEGRITO */}
               <p className="text-[#f274a4] font-extrabold mt-1">{product.price}</p>
             </div>
             
-            {/* ESTILO DO BOTÃO ALTERADO PARA #f274a4 E CORRIGIDO HOVER */}
             <button 
               type="button"
               onClick={() => setSelectedProduct(product)}
@@ -63,11 +81,9 @@ export default function ProductCatalog() {
             
             <span className="text-xs font-bold uppercase bg-[#CDB4F6]/20 text-[#7a59b0] px-3 py-1 rounded-full">{selectedProduct.tag}</span>
             <h3 className="text-2xl font-bold mt-3 text-[#4A3E3D]">{selectedProduct.name}</h3>
-            {/* VALOR DO MODAL CORRIGIDO PARA A MESMA PALETA DE COR */}
             <p className="text-xl font-extrabold text-[#f274a4] mt-1">{selectedProduct.price}</p>
             <p className="text-sm text-[#4A3E3D]/80 mt-4 leading-relaxed">{selectedProduct.desc}</p>
             
-            {/* LINK DO WHATSAPP DO MODAL ATUALIZADO PARA VARIÁVEL DE AMBIENTE POR SEGURANÇA */}
             <a 
               href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}?text=${encodeURIComponent(`Olá, Gisa Ateliê! Vi os mais procurados no site e quero encomendar o item: ${selectedProduct.name} (${selectedProduct.price})`)}`}
               target="_blank"

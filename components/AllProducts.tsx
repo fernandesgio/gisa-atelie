@@ -2,38 +2,53 @@
 
 import React, { useState } from 'react';
 
-// Categorias unificadas e organizadas
 const CATEGORIES = [
   'Todos', 'Games', 'Geek', 'Acessórios', 'Ímãs', 'Chaveiros', 'Decorações', 'Porta Copos', 'Paisagens', 'Bandeiras'
 ];
 
-// Array de produtos genéricos com todas as categorias que vocês pediram
 const ALL_PRODUCTS = [
-  { id: 1, name: 'Chaveiro Gatinho Personalizado', price: 'R$ 25,00', category: 'Chaveiros', desc: 'Chaveiro em Hama Beads feito com base na foto do seu felino favorito.', img: '/produtos/chaveiro-gato.png' },
-  { id: 2, name: 'Ímã Controlinho Retrô', price: 'R$ 18,00', category: 'Games', desc: 'Lindo ímã de geladeira em formato de controle clássico de videogame.', img: '/produtos/ima-controle.png' },
-  { id: 3, name: 'Porta Copo Pokebola', price: 'R$ 15,00', category: 'Porta Copos', desc: 'Proteja seus móveis com estilo geek usando esse porta copos pixelado.', img: '/produtos/porta-copo-poke.png' },
-  { id: 4, name: 'Placa Pixel Art Herói Pop', price: 'R$ 50,00', category: 'Geek', desc: 'Placa decorativa perfeita para o seu quarto geek ou setup gamer.', img: '/produtos/placa-geek.png' },
-  { id: 5, name: 'Brinco Espadinha Pixel', price: 'R$ 20,00', category: 'Acessórios', desc: 'Par de brincos super leves e estilosos feitos em mini Hama Beads.', img: '/produtos/brinco-espada.png' },
-  { id: 6, name: 'Quadro Mini Paisagem Outono', price: 'R$ 75,00', category: 'Paisagens', desc: 'Uma linda obra de arte em pixel representando uma árvore de outono.', img: '/produtos/quadro-paisagem.png' },
-  { id: 7, name: 'Bandeira Star Wars Imperial', price: 'R$ 60,00', category: 'Bandeiras', desc: 'Flâmula decorativa pixelada para pendurar na parede.', img: '/produtos/bandeira-starwars.png' },
-  { id: 8, name: 'Vaso de Planta Pixel Flor', price: 'R$ 45,00', category: 'Decorações', desc: 'Item decorativo em 3D imitando os vasinhos dos jogos clássicos.', img: '/produtos/vaso-flor.png' },
-  { id: 9, name: 'Ímã de Geladeira Cãozinho', price: 'R$ 22,00', category: 'Ímãs', desc: 'Lindo ímã pixelado para decorar seu ambiente com a carinha do seu doguinho.', img: '/produtos/ima-cao.png' },
+  { id: 1, name: 'Chaveiro Pet Personalizado', price: 'R$ 32,00', category: 'Chaveiros', desc: 'Seu pet em pixel art! Chaveiro feito sob encomenda com base na foto do seu bichinho (tamanho padrão). Para outros tamanhos, consulte valores entre R$ 30,00 e R$ 35,00.', img: '/produtos/chaveiro-gato.png' },
+  { id: 2, name: 'Ímã Controlinho Retrô', price: 'R$ 25,00', category: 'Games', desc: 'Lindo ímã de geladeira padrão em formato de controle clássico de videogame.', img: '/produtos/ima-controle.png' },
+  { id: 3, name: 'Porta Copo Pokebola', price: 'R$ 15,00', category: 'Porta Copos', desc: 'Proteja seus móveis com estilo geek usando esse porta copos pixelado padrão.', img: '/produtos/porta-copo-poke.png' },
+  { id: 4, name: 'Placa Pixel Art Herói Pop', price: 'R$ 40,00', category: 'Geek', desc: 'Placa decorativa perfeita para o seu quarto geek ou setup gamer.', img: '/produtos/placa-geek.png' },
+  { id: 5, name: 'Brinco Espadinha Pixel', price: 'R$ 15,00', category: 'Acessórios', desc: 'Par de brincos modelo padrão, super leves e estilosos feitos em mini Hama Beads.', img: '/produtos/brinco-espada.png' },
+  { id: 6, name: 'Quadro Mini Paisagem Outono', price: 'R$ 40,00', category: 'Paisagens', desc: 'Uma linda obra de arte em pixel representando uma árvore de outono (tamanho placa padrão).', img: '/produtos/quadro-paisagem.png' },
+  { id: 7, name: 'Bandeira Star Wars Imperial', price: 'R$ 40,00', category: 'Bandeiras', desc: 'Flâmula decorativa pixelada padrão para pendurar na parede.', img: '/produtos/bandeira-starwars.png' },
+  { id: 8, name: 'Vaso de Planta Pixel Flor', price: 'R$ 40,00', category: 'Decorações', desc: 'Item decorativo em 3D imitando os vasinhos dos jogos clássicos.', img: '/produtos/vaso-flor.png' },
+  { id: 9, name: 'Ímã de Geladeira Cãozinho', price: 'R$ 25,00', category: 'Ímãs', desc: 'Lindo ímã pixelado modelo pronto para decorar seu ambiente com muita fofura.', img: '/produtos/ima-cao.png' },
 ];
 
 export default function AllProducts() {
   const [activeCategory, setActiveCategory] = useState('Todos');
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
 
-  // Filtra os produtos com base na categoria selecionada
   const filteredProducts = activeCategory === 'Todos' 
     ? ALL_PRODUCTS 
     : ALL_PRODUCTS.filter(product => product.category === activeCategory);
 
   return (
     <section id="produtos" className="py-20 px-4 max-w-7xl mx-auto relative z-30 scroll-mt-16">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold text-[#4A3E3D] mb-3">Nossa Vitrine Completa</h2>
-        <p className="text-sm text-[#4A3E3D]/70 max-w-xl mx-auto">
+      {/* TÍTULO PIXELADO E COLORIDO VIA STYLE INLINE */}
+      <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+        <h2 style={{ 
+          fontFamily: "'Silkscreen', sans-serif", 
+          fontSize: '1.85rem', 
+          fontWeight: 'bold', 
+          letterSpacing: '0.05em', 
+          userSelect: 'none' 
+        }}>
+          {"Nossa Vitrine Completa".split("").map((char, index) => {
+            const colors = ['#f182ad', '#946ad8', '#e0574b'];
+            const currentColor = colors[index % colors.length];
+            if (char === " ") return <span key={index}>&nbsp;</span>;
+            return (
+              <span key={index} style={{ fontFamily: "'Silkscreen', sans-serif", color: currentColor }}>
+                {char}
+              </span>
+            );
+          })}
+        </h2>
+        <p style={{ fontSize: '0.875rem', color: 'rgba(74, 62, 61, 0.7)', maxWidth: '28rem', margin: '0.75rem auto 0' }}>
           Explore todas as criações do Gisa Ateliê. Peças feitas à mão, pixel por pixel, com muito amor e carinho!
         </p>
       </div>
@@ -69,7 +84,6 @@ export default function AllProducts() {
               className="bg-[#FFF9F4] rounded-3xl p-5 border border-[#F8B8D0]/20 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group"
             >
               <div>
-                {/* Imagem (Fundo branco padrão) */}
                 <div className="bg-white rounded-2xl h-44 mb-4 flex items-center justify-center border border-[#F8B8D0]/10 overflow-hidden p-2 relative">
                   <img 
                     src={product.img} 
@@ -84,7 +98,6 @@ export default function AllProducts() {
                   {product.category}
                 </span>
                 <h3 className="font-bold text-base mt-2.5 text-[#4A3E3D] line-clamp-1">{product.name}</h3>
-                {/* COR DO PREÇO AJUSTADA NO CARD */}
                 <p className="text-[#f274a4] font-extrabold text-sm mt-0.5">{product.price}</p>
               </div>
               
@@ -127,7 +140,6 @@ export default function AllProducts() {
             
             <span className="text-xs font-bold uppercase bg-[#CDB4F6]/20 text-[#7a59b0] px-3 py-1 rounded-full">{selectedProduct.category}</span>
             <h3 className="text-2xl font-bold mt-3 text-[#4A3E3D]">{selectedProduct.name}</h3>
-            {/* COR DO PREÇO AJUSTADA NO MODAL */}
             <p className="text-xl font-extrabold text-[#f274a4] mt-1">{selectedProduct.price}</p>
             <p className="text-sm text-[#4A3E3D]/80 mt-4 leading-relaxed">{selectedProduct.desc}</p>
             
